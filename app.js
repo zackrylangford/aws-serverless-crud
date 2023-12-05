@@ -1,5 +1,5 @@
 document.getElementById('getAllItems').addEventListener('click', function() {
-    fetch('https://2jkh43sq9k.execute-api.us-east-1.amazonaws.com/Prod/')
+    fetch('https://api/')
         .then(response => response.json())
         .then(data => {
             document.getElementById('items').innerText = JSON.stringify(data, null, 2);
@@ -8,7 +8,7 @@ document.getElementById('getAllItems').addEventListener('click', function() {
 
 document.getElementById('getItem').addEventListener('click', function() {
     const id = document.getElementById('getItemId').value;
-    fetch(`https://2jkh43sq9k.execute-api.us-east-1.amazonaws.com/Prod/${id}`)
+    fetch(`https://api/${id}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById('singleItem').innerText = JSON.stringify(data, null, 2);
@@ -18,7 +18,7 @@ document.getElementById('getItem').addEventListener('click', function() {
 document.getElementById('deleteItem').addEventListener('click', function() {
     const id = document.getElementById('deleteItemId').value;
     console.log("Delete this id please: " + id);
-    fetch(`https://2jkh43sq9k.execute-api.us-east-1.amazonaws.com/Prod/${id}`, { method: 'DELETE' })
+    fetch(`https://api/${id}`, { method: 'DELETE' })
         .then(response => response.json())
         .then(data => {
             alert('Item deleted');
@@ -29,7 +29,7 @@ document.getElementById('deleteItem').addEventListener('click', function() {
 document.getElementById('addItem').addEventListener('click', function() {
     const id = document.getElementById('newItemId').value;
     const name = document.getElementById('newItemName').value;
-    fetch('https://2jkh43sq9k.execute-api.us-east-1.amazonaws.com/Prod/', { 
+    fetch('https://api/', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
